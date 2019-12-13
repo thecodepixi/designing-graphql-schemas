@@ -97,7 +97,7 @@ Instructor: [00:00] In this lesson, we want to expose the image. Based on the wi
       id: ID!
       name: String
       description: String
-      imageUrl: String @deprecated(reason: "Use \`image { url }\`.")
+      imageUrl: String 
       image: Image
   }
 
