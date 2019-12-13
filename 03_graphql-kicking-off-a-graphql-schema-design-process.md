@@ -4,7 +4,42 @@ Instructor: [0:00] For this course, we're going to design the schema of a web sh
 
 [0:32] While naturally you might want to start out with defined types, I urge you to start with writing down the queries, and possibly their example results, because this is what the developers building your clients will do. This way, you can see how you're going to use the schema. Let's do this by retrieving this one laptop with only its name. The expected result would look like this. Great.
 
+``` graphql 
+  {
+    product(id: "abc") {
+      name
+      description
+    }
+  }
+```
+
+```json 
+  {
+    product: {
+      title: "Blackbook";
+      description: "Great …”
+    }
+  }
+```
+
 [1:05] Next up, we add the description. We add it to the query and then to the result. Let's implement it in our schema and verify it works as expected. We add the type product, and with it the name and description.
+
+**index.js** 
+
+```js
+  const { ApolloServer, gql } = require("apollo-server");
+
+  const typeDefs = gql`
+    type Product {
+      name: String
+      description: String
+    }
+
+     type Query {
+      product(id: ID!): Product
+    }
+  `;
+``` 
 
 [1:24] Then we add a query product, returning a product based on the ID. Once implemented, we can copy our previously defined example query, switch to the browser, and verify that it works as expected. Looks good to me.
 
