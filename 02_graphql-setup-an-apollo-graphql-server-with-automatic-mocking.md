@@ -20,7 +20,7 @@ Instructor: [00:00] For this course, any GraphQL server would do because I'm qui
 }
 ``` 
 
-[00:15] For this course though, we're mostly not going to write your servers and simply mock the schema. This allows us to iterate faster when assigning the schema. We can activate the mock mode by passing in the option mocks and set it to true.
+[00:15] For this course though, we're mostly not going to write your servers and simply `mock` the schema. This allows us to iterate faster when assigning the schema. We can activate the `mock` mode by passing in the option mocks and set it to `true`.
 
 **index.js** 
 ``` js 
@@ -43,11 +43,11 @@ server.listen(4001).then(({ url }) => {
 
 ```
 
-[00:31] If we now run Yarn start, the server will spin off and under local host:4000, we provide us with a GraphQL ID. Let's visit the URL in a browser and run a query. As you can see, our server is running and now the query was mocked.
+[00:31] If we now run `Yarn start`, the server will spin off and under `local host:4000`, we provide us with a GraphQL ID. Let's visit the URL in a browser and run a query. As you can see, our server is running and now the query was mocked.
 
-[00:51] The Apollo server under mock mode by default will mock any type but it also gives us the opportunity to customize the mocks per type. Let's return just Hello for string instead of the Hello World. Therefore, we create a new object mocks containing one property. Its key is string and the value, a function returning Hello.
+[00:51] The Apollo server under `mock` mode by default will `mock` any type but it also gives us the opportunity to customize the mocks per type. Let's return just `Hello` for `String` instead of the `Hello World`. Therefore, we create a new object `mocks` containing one property. Its key is `String` and the value, a function returning Hello.
 
-[01:15] Be aware that the GraphQL schema type string starts with an uppercase S and therefore, the object key has to do as well, then we replace the mocks Boolean with the full object to a name punning in JavaScript, we can simply remove the colon true.
+[01:15] Be aware that the GraphQL schema type `String` starts with an uppercase `S` and therefore, the object key has to do as well, then we replace the `mocks` Boolean with the full object to a name punning in JavaScript, we can simply remove the `:true`.
 
 ``` js 
 const typeDefs = gql`
@@ -65,9 +65,9 @@ const server = new ApolloServer({
 
 ```
 
-[01:32] If we rerun the query, we can see that our string is now mocked with just Hello. Having paths of the schema mock, but other paths being actually resolved is also possible. We extend our type definitions with Hello to colon string and implement the resolve for it.
+[01:32] If we rerun the query, we can see that our `String` is now mocked with just `Hello`. Having paths of the schema `mock`, but other paths being actually resolved is also possible. We extend our type definitions with Hello to colon string and implement the resolve for it.
 
-[01:56] We pass through servers object to Apollo server and the mutations set mock and entire schema to false. Now, we can create for Hello 2 and Hello. As you can see, Hello 2 returns the resolved result while Hello still relies on the mocks. This setup should take you quite far when exploring and iterating on a new schema design.
+[01:56] We pass through servers object to Apollo server and the mutations set `mock` and entire schema to false. Now, we can create for `helloTwo` and `Hello`. As you can see, `helloTwo` returns the resolved result while `Hello` still relies on the `mocks`. This setup should take you quite far when exploring and iterating on a new schema design.
 
 ``` js 
 const { ApolloServer, gql } = require("apollo-server");

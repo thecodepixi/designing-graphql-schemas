@@ -4,6 +4,7 @@ Instructor: [0:00] For this course, we're going to design the schema of a web sh
 
 [0:32] While naturally you might want to start out with defined types, I urge you to start with writing down the queries, and possibly their example results, because this is what the developers building your clients will do. This way, you can see how you're going to use the schema. Let's do this by retrieving this one laptop with only its name. The expected result would look like this. Great.
 
+**graphql query**
 ``` graphql 
   {
     product(id: "abc") {
@@ -12,17 +13,17 @@ Instructor: [0:00] For this course, we're going to design the schema of a web sh
     }
   }
 ```
-
+**result**
 ```json 
   {
-    product: {
-      title: "Blackbook";
-      description: "Great …”
+    "product": {
+      "title": "Blackbook";
+      "description": "Great …”
     }
   }
 ```
 
-[1:05] Next up, we add the description. We add it to the query and then to the result. Let's implement it in our schema and verify it works as expected. We add the type product, and with it the name and description.
+[1:05] Next up, we add the description. We add it to the query and then to the result. Let's implement it in our schema and verify it works as expected. We add the `type Product`, and with it the `name` and `description`.
 
 **index.js** 
 
@@ -41,7 +42,7 @@ Instructor: [0:00] For this course, we're going to design the schema of a web sh
   `;
 ``` 
 
-[1:24] Then we add a query product, returning a product based on the ID. Once implemented, we can copy our previously defined example query, switch to the browser, and verify that it works as expected. Looks good to me.
+[1:24] Then we add a `Query` `product`, returning a `product` based on the `ID`. Once implemented, we can copy our previously defined example query, switch to the browser, and verify that it works as expected. Looks good to me.
 
 [1:43] As said, while this process doesn't automatically lead us to a good design, it's a good way to start. To me personally, a well-designed GraphQL schema allows you to cover all known use cases and behaviors in a domain-driven fashion while still being optimized for change.
 
